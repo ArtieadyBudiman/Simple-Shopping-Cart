@@ -1,3 +1,32 @@
+tips: gunakan `npx create-react-app` dan `react-redux`
+1. Buat sebuah web app dengan menggunakan reactjs dan pastikan memenuhi user story berikut
+wireframe: https://www.figma.com/file/j3sULCNdt54eTwQxNVfhpR/weekly-assessment-week-5?node-id=0%3A1
+1.a. terdapat 2 page/route (home dan checkout)
+1.a.1. halaman home ketika pertama di-load akan mengambil data dari (https://my-json-server.typicode.com/irhamhqm/placeholder-shops/items)
+1.a.2. data yang sudah diambil akan ditampilkan sebagai grid
+1.a.3. item-item yang ada di grid menampilkan data berikut(semua di dapat dari url di atas):
+1. nama product
+2. gambar product
+3. harga product
+4. banyak product yang tersedia
+5. 2 button(tambah dan kurang), 1 input
+1.a.4. jumlah barang yang di-input pada point 1.a.3.5 akan secara otomatis tersimpan di state management(masuk ke cart/keranjang belanja)
+1.a.5. pada bagian bawah halaman terdapat bottom bar yang menampilkan total belanja dan tombol checkout
+1.b.1. pada halaman checkout ada list barang-barang yang sudah masuk di cart
+1.b.2. data yang ditampilkan oleh item yang ada di list(checkout page) adalah sebagai berikut
+1. nama product
+2. gambar product
+3. harga product
+1.b.3. pada bagian bawah list terdapat total belanja
+
+tip: jika teks lebih panjang dari container gunakan ellipsis (https://stackoverflow.com/questions/34294054/how-to-implement-single-line-ellipsis-with-css)
+
+extra:
+1. saat fetching data tampilkan loader, saat fetching data terjadi error tampilkan pesan error
+2. jumlah barang yang dimasukkan ke cart tidak boleh lebih dari banyak product yang tersedia
+3. jika cart kosong tidak bisa masuk ke halaman checkout
+4. responsive
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
