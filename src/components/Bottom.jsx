@@ -1,9 +1,19 @@
-const Bottom = () =>{
+import {Navbar, Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+
+const Bottom = (props) =>{
+
    return(
-      <div className="bottom">
-         <p>Total Belanja:</p>
-         <button>Checkout</button>
-      </div>
+      <Navbar className="bottom fixed-bottom" expand="lg" variant="light" bg="light">
+         <div className="total">
+            <p>
+               {`Total Belanja : Rp ${parseInt(props.totalAmount).toLocaleString()},-`}
+            </p>
+            <Button variant="primary">
+               <Link to={props.link}>{props.button}</Link>
+            </Button>
+         </div>
+      </Navbar>
    )
 }
 
