@@ -1,4 +1,3 @@
-import {Card} from 'react-bootstrap';
 import {useSelector} from 'react-redux';
 
 const CheckOutList = ()=> {
@@ -6,26 +5,28 @@ const CheckOutList = ()=> {
    console.log(cart)
 
    return(
-         <div className="CheckOut">
-            <h3>Detail Belanja</h3>
-            <Card className="cardProductCheckout">
+         <div className="CheckOut row col-md-8 col-10 justify-content-center mx-auto shadow p-3 bg-body rounded">
+            <h3 className="checkOutTitle">Detail Belanja</h3>
+            <div className="cardProductCheckout justify-content-center col-11 d-flex flex-column mb-3">
             {cart.map((item)=>{
                return(
-                  <Card.Body className="CheckOutItem" key="uid">
-                  <Card.Img className="img-Checkout" variant="top" src={item.image.url} />
-                     <div className="productSummary">
-                        <Card.Title>{item.productName}</Card.Title>
-                        <Card.Text>
-                           {`${item.qty} x Rp ${parseInt(item.price).toLocaleString()},-`}
-                        </Card.Text>
-                        <Card.Text>
-                           {`Rp ${parseInt(item.qty * item.price).toLocaleString()},-`}
-                        </Card.Text>
+                  <div className="CheckOutItem d-flex flex-row align-items-center my-3 shadow-sm p-3 bg-body rounded" >
+                     <div className=" image col-6" >
+                        <img className="img-Checkout img-fluid p-3"  src={item.image.url} />
                      </div>
-                  </Card.Body>
+                     <div className="productSummary col-6">
+                        <h4>{item.productName}</h4>
+                        <p className="totalHarga">
+                           {`${item.qty} x Rp ${parseInt(item.price).toLocaleString()},-`}
+                        </p>
+                        <p className="totalBelanja">
+                           {`Rp ${parseInt(item.qty * item.price).toLocaleString()},-`}
+                        </p>
+                     </div>
+                  </div>
                )
             })}
-            </Card>
+            </div>
          </div>
    )
 }

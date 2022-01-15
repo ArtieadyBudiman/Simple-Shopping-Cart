@@ -26,10 +26,10 @@ const Product = ()=>{
    }
 
    return(
-         <div className="product">
+         <div className="product col-12 col-md-10 mx-auto d-flex flex-row justify-content-center">
             {itemList.map((item)=>{
                return(
-               <Card className="card-product shadow-sm p-3 bg-body rounded" key={item.uid}>
+               <Card className="card-product col-10 col-md-3 shadow-sm p-3 bg-body rounded mx-3 my-3" key={item.uid}>
                   <Card.Img className="img-product" variant="top" src={item.image.url} alt={item.image.altText} />
                   <Card.Body>
                      <Card.Title>{item.productName}</Card.Title>

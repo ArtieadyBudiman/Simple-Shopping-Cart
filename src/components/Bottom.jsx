@@ -10,7 +10,9 @@ const Bottom = (props) =>{
                {`Total Belanja : Rp ${parseInt(props.totalAmount).toLocaleString()},-`}
             </p>
             <Button variant="primary">
-               <Link to={props.link}>{props.button}</Link>
+               <Link to={props.link} style={{ textDecoration: 'none' }}>
+                  <span className="buttonText">{props.button}</span>
+               </Link>
             </Button>
          </div>
       </Navbar>
