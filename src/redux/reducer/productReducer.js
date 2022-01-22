@@ -33,6 +33,20 @@ const productReducer = (state = initialState, action) => {
             }),
          };
       }
+      case 'CHANGE_STOCK':
+      return {
+         ...state,
+         itemList: state.itemList.map((item) => {
+            if (item.uid === action.payload.uid) {
+               return {
+               ...item,
+               stock: item.availableQuantity - action.payload.value,
+               };
+            } else {
+               return item;
+            }
+         }),
+      };
       default:{
          return{
             ...state,

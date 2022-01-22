@@ -12,7 +12,6 @@ const Home = ()=>{
       <>
          <Header/>
          <Product/>
-         {/* {cart.length ? ( */}
             <Bottom
                button = "Checkout"
                link = "/checkout"
@@ -20,7 +19,6 @@ const Home = ()=>{
                   cart.length ? cart.map ((item)=> item.qty * item.price).reduce((a,b)=> a + b) : 0
                }
             />
-         {/* ) : null} */}
       </>
       )
 };

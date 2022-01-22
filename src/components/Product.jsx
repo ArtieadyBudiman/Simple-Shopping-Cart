@@ -1,7 +1,7 @@
 import {Button, Card, InputGroup, FormControl} from 'react-bootstrap';
 import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {getListItem, changeQty, addCart} from './../redux/action/productAction';
+import {getListItem, changeQty, addCart, changeStock} from './../redux/action/productAction';
 
 const Product = ()=>{
    const dispatch = useDispatch();
@@ -18,10 +18,9 @@ const Product = ()=>{
       dispatch(addCart(itemList));
    }, [itemList])
    
-   const handleOnChange = (event,item) =>{
-      const value = event.target.value;
-      const uid = item.uid;
-      dispatch(changeQty({uid,value}))
+   const handleOnChange = (uid, value) =>{
+      dispatch(changeQty({uid, value}))
+      dispatch(changeStock({uid, value}))
       // console.log(value)
    }
 
@@ -33,7 +32,7 @@ const Product = ()=>{
                   <Card.Img className="img-product" variant="top" src={item.image.url} alt={item.image.altText} />
                   <Card.Body>
                      <Card.Title>{item.productName}</Card.Title>
-                     <Card.Text>Stock: {item.availableQuantity}</Card.Text>
+                     <Card.Text>Stock: {item.stock}</Card.Text>
                      <Card.Text>
                         {`Rp ${parseInt(item.price).toLocaleString()},-`}
                      </Card.Text>
@@ -42,7 +41,7 @@ const Product = ()=>{
                            variant="secondary" 
                            id="button-addon1"
                            onClick={
-                              ()=>{dispatch(changeQty({uid:item.uid,value:item.qty - 1}))}
+                              ()=>{dispatch(handleOnChange(item.uid, item.qty - 1))}
                            }
                            disabled={item.qty <= 0 ? true:false}
                         >
@@ -53,13 +52,13 @@ const Product = ()=>{
                            aria-describedby="basic-addon1"
                            type="number"
                            value={item.qty}
-                           onChange={(e)=>handleOnChange(e,item)}
+                           onChange={(e)=>handleOnChange(item.uid, e.target.value)}
                         />
                         <Button 
                            variant="secondary" 
                            id="button-addon1"
                            onClick={
-                              ()=>{dispatch(changeQty({uid:item.uid,value:item.qty + 1}))}
+                              ()=>{dispatch(handleOnChange(item.uid, item.qty + 1))}
                            }
                            disabled={item.qty >= item.availableQuantity ? true:false}
                         >
